@@ -103,7 +103,7 @@ medford update #6
     see - https://stackoverflow.com/questions/60368999/why-wont-my-docker-postgresql-container-run-anymore
 
 medford update #7
-    docker-compose up
+    docker-compose up 
 
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup

@@ -101,7 +101,9 @@ medford update #6
             username: postgres
             password: <%= ENV['POSTGRES_PASSWORD'] %>
     see - https://stackoverflow.com/questions/60368999/why-wont-my-docker-postgresql-container-run-anymore
-
+```
+## Docker (continued)
+```
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
 
@@ -120,7 +122,7 @@ docker-compose up
     rails server
 
 ## Seed Data
-    bundle exec rake data:load_drains
+    bundle exec rake data:load_things
 
 ## Deploying to Heroku
 A successful deployment to Heroku requires a few setup steps:
@@ -136,6 +138,11 @@ A successful deployment to Heroku requires a few setup steps:
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ```
+
+medford note:
+    add to .env 
+    GOOGLE_MAPS_KEY=the key for maps
+    GOOGLE_GEOCODER_API_KEY=the key for geocoder
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 

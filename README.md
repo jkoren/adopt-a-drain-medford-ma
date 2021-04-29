@@ -145,7 +145,7 @@ A successful deployment to Heroku requires a few setup steps:
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
     ```
-    medford note #7: before precompile: export GOOGLE_GEOCODER_API_KEY=AIzaSyBBWQPFxuORXP-AY7f0nVkFAJg6Kpe8-z8
+    medford note #7: before precompile: export GOOGLE_GEOCODER_API_KEY=(key)
 
     RAILS_ENV=production bundle exec rake assets:precompile
 
@@ -191,6 +191,9 @@ development:
 test:
   google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+
+medford note #12
+heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your

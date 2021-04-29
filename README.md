@@ -91,6 +91,8 @@ added to Dockerfile: (copied from Savannah implementation)
 medford update #6
     Docker has changed since this repo was built.  Docker has added additional security requirements.
     Add the postgres password to the .env file, and then add these lines to docker config files.
+    see - https://stackoverflow.com/questions/60368999/why-wont-my-docker-postgresql-container-run-anymore
+
     docker-compose.yml:
         db:
             image: postgres
@@ -100,7 +102,7 @@ medford update #6
         (to both development: and test:)
             username: postgres
             password: <%= ENV['POSTGRES_PASSWORD'] %>
-    see - https://stackoverflow.com/questions/60368999/why-wont-my-docker-postgresql-container-run-anymore
+    
 ```
 ## Docker (continued)
 ```
@@ -119,7 +121,8 @@ docker-compose up
 ```
 
 ## Usage
-    rails server
+    rails server 
+    medford note: don't do this, do "docker-compose" up instead.
 
 ## Seed Data
     bundle exec rake data:load_things
@@ -137,16 +140,13 @@ A successful deployment to Heroku requires a few setup steps:
 
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
-    ```
-
-medford note:
-    add to .env 
-    GOOGLE_MAPS_KEY=the key for maps
-    GOOGLE_GEOCODER_API_KEY=the key for geocoder
+    ``` 
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
     ```
+    medford note #7: before precompile: export GOOGLE_GEOCODER_API_KEY=AIzaSyBBWQPFxuORXP-AY7f0nVkFAJg6Kpe8-z8
+
     RAILS_ENV=production bundle exec rake assets:precompile
 
     git add public/assets
@@ -156,6 +156,12 @@ medford note:
 
 4. Add a production database to config/database.yml
 
+medford note #8: 
+    heroku stack:set heroku-18
+    git push heroku master 
+    heroku rake db:create
+    heroku rake db:migrate
+
 5. Seed the production db:
 
     `heroku run bundle exec rake db:seed`
@@ -163,6 +169,28 @@ medford note:
 Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows,
 so if your city has more than 10,000 fire drains (or other thing to be
 adopted), you will need to upgrade to the $9/month plan.
+
+medford note: #9
+### Google Maps API Service  (from Adopt-A-Drain Savannah)
+You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
+After you have obtained the key, you will need to set it as an environment variable.
+
+    heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
+
+medford note: #10
+need to update .env file to include:
+GOOGLE_MAPS_JAVASCRIPT_API_KEY=(your key)
+SECRET_KEY_BASE=(your key)
+
+medford note: #11
+need to update secrets.yml file as:
+development:
+  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
+
+test:
+  google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
+  secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your

@@ -109,8 +109,17 @@ medford update #6
 # Setup your docker based postgres database:
 docker-compose run --rm web bundle exec rake db:setup
 
+medford note 13:
+need to create a csv file similar to Savannah's savannah_drains.csv to use Savannah's data.rake
+
+medford note 14: 
+replace data.rake with Savannah's - based on advice from San Francisco implementation: 
+    # class for importing things from CSV datasource is currently very specific to drains from DataSF 
+change Savannah's data.rake to reflect medford.csv of drains
+
 # Load data:
-docker-compose run --rm web bundle exec rake data:load_things
+docker-compose run --rm web bundle exec rake data:load_drains
+    medford note 15: then restart server (docker-compose up)
 # OR: don't load all that data, and load the seed data:
 # docker-compose run --rm web bundle exec rake db:seed
 
@@ -122,7 +131,7 @@ docker-compose up
 
 ## Usage
     rails server 
-    medford note: don't do this, do "docker-compose" up instead.
+    medford note: don't do this, do "docker-compose up" instead.
 
 ## Seed Data
     bundle exec rake data:load_things

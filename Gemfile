@@ -43,3 +43,5 @@ group :test do
   gem 'simplecov', require: false
   gem 'webmock'
 end
+
+gem 'pry-rails', group: :development

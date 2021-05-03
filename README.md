@@ -117,9 +117,15 @@ replace data.rake with Savannah's - based on advice from San Francisco implement
     # class for importing things from CSV datasource is currently very specific to drains from DataSF 
 change Savannah's data.rake to reflect medford.csv of drains
 
+medford note 15:
+for binding.pry to work: https://gist.github.com/briankung/ebfb567d149209d2d308576a6a34e5d8
+    First, add pry-rails to your Gemfile: gem 'pry-rails', group: :development
+    Second, rebuild your Docker container to install the gems: docker-compose build
+
 # Load data:
 docker-compose run --rm web bundle exec rake data:load_drains
     medford note 15: then restart server (docker-compose up)
+    
 # OR: don't load all that data, and load the seed data:
 # docker-compose run --rm web bundle exec rake db:seed
 

@@ -9,10 +9,10 @@ namespace :data do
   require 'open-uri'
   require 'csv'
   require 'json'
-  # require 'bigdecimal'
 
   task load_drains: :environment do
     puts "There are " + Thing.count.to_s + " old drains.."
+    # do this interactively in IRB
     # old_drains = Thing.all
     # old_drains.destroy_all
 
@@ -42,12 +42,10 @@ namespace :data do
         if thing
           thing.assign_attributes(thing_hash)
           if thing.changed?
-            # puts "drain " + total.to_s + " changed"
             updated += 1
           end
         else
           Thing.create(thing_hash)
-          # puts "drain " + total.to_s + " created"
           created += 1
         end
         

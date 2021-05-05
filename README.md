@@ -129,6 +129,9 @@ docker-compose run --rm web bundle exec rake data:load_drains
 # OR: don't load all that data, and load the seed data:
 # docker-compose run --rm web bundle exec rake db:seed
 
+medford note 16:
+ Adjust initialLocation in ./app/assets/javascripts/main.js.rb. 
+
 # Start the web server:
 docker-compose up
 

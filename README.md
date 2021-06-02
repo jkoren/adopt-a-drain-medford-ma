@@ -132,6 +132,9 @@ docker-compose run --rm web bundle exec rake data:load_drains
 medford note 16:
  Adjust initialLocation in ./app/assets/javascripts/main.js.rb. 
 
+ medford note 17:
+ whenever loading new assets, such as .png files, always run docker-compose up, then access the server via localhost:3000 (which creates the public assets), then push to heroku
+
 # Start the web server:
 docker-compose up
 

@@ -167,13 +167,12 @@ A successful deployment to Heroku requires a few setup steps:
 
     ```
     medford note #7: before precompile: export GOOGLE_GEOCODER_API_KEY=(key)
-
+    ```
     RAILS_ENV=production bundle exec rake assets:precompile
 
     git add public/assets
 
     git commit -m "vendor compiled assets"
-    ```
 
 4. Add a production database to config/database.yml
 

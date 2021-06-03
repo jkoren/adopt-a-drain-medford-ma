@@ -133,7 +133,7 @@ medford note 16:
  Adjust initialLocation in ./app/assets/javascripts/main.js.rb. 
 
  medford note 17:
- whenever loading new assets, such as .png files, always run docker-compose up, then access the server via localhost:3000 (which creates the public assets), then push to heroku
+ whenever loading new assets, such as .png files, always pre-compile assets (see step 3)., then add, commit and push to heroku.
 
 # Start the web server:
 docker-compose up

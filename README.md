@@ -151,6 +151,11 @@ docker-compose up
 ## Deploying to Heroku
 A successful deployment to Heroku requires a few setup steps:
 
+medford note:
+    heroku login
+    heroku git:remote -a `app-name`
+    heroku stack:set heroku-18
+
 1. Generate a new secret token:
 
     ```
@@ -162,6 +167,11 @@ A successful deployment to Heroku requires a few setup steps:
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ``` 
+
+    medford note:
+    heroku rake db:create
+    heroku rake db:migrate
+    heroku rake db:seed
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 

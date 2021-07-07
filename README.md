@@ -152,10 +152,11 @@ docker-compose up
 A successful deployment to Heroku requires a few setup steps:
 
 medford note:
+```
     heroku login
     heroku git:remote -a `app-name`
     heroku stack:set heroku-18
-
+```
 1. Generate a new secret token:
 
     ```
@@ -167,11 +168,6 @@ medford note:
     ```
     heroku config:set SECRET_TOKEN=the_token_you_generated
     ``` 
-
-    medford note:
-    heroku rake db:create
-    heroku rake db:migrate
-    heroku rake db:seed
 
 3. [Precompile your assets](https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar)
 
@@ -186,15 +182,23 @@ medford note:
 
 4. Add a production database to config/database.yml
 
-medford note #8: 
-    heroku stack:set heroku-18
+    medford note #8: 
+    ```
     git push heroku master 
-    heroku rake db:create
-    heroku rake db:migrate
+    ```
 
 5. Seed the production db:
 
-    `heroku run bundle exec rake db:seed`
+    medford note:
+    ```
+    heroku rake db:create
+    heroku rake db:migrate
+
+    for sample data:
+        heroku rake db:seed
+    for real data:
+        heroku rake data:load_drains
+    ```
 
 Keep in mind that the Heroku free Postgres plan only allows up to 10,000 rows,
 so if your city has more than 10,000 fire drains (or other thing to be
@@ -206,9 +210,12 @@ You will need to apply for a Google Maps Javascript API key in order to remove t
 After you have obtained the key, you will need to set it as an environment variable.
 
     heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
+    
+    medford note #12 - you also need:
+    heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
 
 medford note: #10
-need to update .env file to include:
+for dev box to work, need to update .env file to include:
 GOOGLE_MAPS_JAVASCRIPT_API_KEY=(your key)
 SECRET_KEY_BASE=(your key)
 
@@ -222,8 +229,6 @@ test:
   google_maps_javascript_api_key: <%= ENV["GOOGLE_MAPS_JAVASCRIPT_API_KEY"] %>
   secret_key_base: <%= ENV["SECRET_KEY_BASE"] %>
 
-medford note #12
-heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
 
 ### Google Analytics
 If you have a Google Analytics account you want to use to track visits to your

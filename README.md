@@ -136,6 +136,7 @@ medford note 16:
  whenever loading new assets, such as .png files, always pre-compile assets (see step 3 below)., then add, commit and push to heroku.
 
 # Start the web server:
+docker-compose build 
 docker-compose up
 
 # Visit your website http://localhost:3000 (or the IP of your docker-machine)

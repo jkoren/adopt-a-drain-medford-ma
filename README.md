@@ -133,7 +133,7 @@ medford note 16:
  Adjust initialLocation in ./app/assets/javascripts/main.js.rb. 
 
  medford note 17:
- whenever loading new assets, such as .png files, always pre-compile assets (see step 3)., then add, commit and push to heroku.
+ whenever loading new assets, such as .png files, always pre-compile assets (see step 3 below)., then add, commit and push to heroku.
 
 # Start the web server:
 docker-compose up
@@ -309,4 +309,4 @@ time of a major release, support for that Ruby version may be dropped.
 ## Copyright
 Copyright (c) 2015 Code for San Francisco. See [LICENSE.md](https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md) for details.
 
-[license]: https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md
+[license]: https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md 

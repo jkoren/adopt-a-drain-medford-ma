@@ -135,7 +135,7 @@ medford note 16:
  medford note 17:
  whenever loading new assets, such as .png files, always pre-compile assets (see step 3 below)., then add, commit and push to heroku.
 
-# Start the web server:
+# Start web server: 
 docker-compose build 
 docker-compose up
 

@@ -188,7 +188,7 @@ medford note:
     git push heroku master 
     ```
 
-5. Seed the production db:
+5. Seed production db:
 
     medford note:
     ```
@@ -312,7 +312,8 @@ implementation, you will be personally responsible for providing patches in a
 timely fashion. If critical issues for a particular implementation exist at the
 time of a major release, support for that Ruby version may be dropped.
 
-## Copyright
+## Copyright  
 Copyright (c) 2015 Code for San Francisco. See [LICENSE.md](https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md) for details.
 
 [license]: https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md 
+ 

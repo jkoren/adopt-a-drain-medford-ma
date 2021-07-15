@@ -192,7 +192,13 @@ medford note:
 
     medford note:
     ```
-    heroku rake db:create
+    heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
+    heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
+    heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
+    heroku config:set USER=jeffkorenstein
+    heroku config:set POSTGRES_PASSWORD=your_postgres_password
+
+    heroku rake db:create  (unless already created)
     heroku rake db:migrate
 
     for sample data:
@@ -208,12 +214,11 @@ adopted), you will need to upgrade to the $9/month plan.
 medford note: #9
 ### Google Maps API Service  (from Adopt-A-Drain Savannah)
 You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
-After you have obtained the key, you will need to set it as an environment variable.
+After you have obtained the key, you will need to set it as environment variables.
 
     heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
-    
-    medford note #12 - you also need:
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
+    heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
 
 medford note: #10
 for dev box to work, need to update .env file to include:

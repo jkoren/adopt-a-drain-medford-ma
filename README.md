@@ -135,7 +135,7 @@ medford note 16:
  medford note 17:
  whenever loading new assets, such as .png files, always pre-compile assets (see step 3 below)., then add, commit and push to heroku.
 
-# Start the web server:
+# Start web server: 
 docker-compose build 
 docker-compose up
 
@@ -188,11 +188,17 @@ medford note:
     git push heroku master 
     ```
 
-5. Seed the production db:
+5. Seed production db:
 
     medford note:
     ```
-    heroku rake db:create
+    heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
+    heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
+    heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
+    heroku config:set USER=jeffkorenstein
+    heroku config:set POSTGRES_PASSWORD=your_postgres_password
+
+    heroku rake db:create  (unless already created)
     heroku rake db:migrate
 
     for sample data:
@@ -208,12 +214,11 @@ adopted), you will need to upgrade to the $9/month plan.
 medford note: #9
 ### Google Maps API Service  (from Adopt-A-Drain Savannah)
 You will need to apply for a Google Maps Javascript API key in order to remove the "Development Only" watermark on maps. 
-After you have obtained the key, you will need to set it as an environment variable.
+After you have obtained the key, you will need to set it as environment variables.
 
     heroku config:set GOOGLE_MAPS_KEY=your_maps_api_key
-    
-    medford note #12 - you also need:
     heroku config:set GOOGLE_MAPS_JAVASCRIPT_API_KEY=your_maps_api_key
+    heroku config:set GOOGLE_GEOCODER_API_KEY=your_maps_api_key
 
 medford note: #10
 for dev box to work, need to update .env file to include:
@@ -307,7 +312,8 @@ implementation, you will be personally responsible for providing patches in a
 timely fashion. If critical issues for a particular implementation exist at the
 time of a major release, support for that Ruby version may be dropped.
 
-## Copyright
+## Copyright  
 Copyright (c) 2015 Code for San Francisco. See [LICENSE.md](https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md) for details.
 
 [license]: https://github.com/sfbrigade/adopt-a-drain/blob/master/LICENSE.md 
+ 
